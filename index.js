@@ -5,19 +5,35 @@
  * The function accepts following parameters:
  *  1. INTEGER steps
  *  2. STRING path
- * https://www.hackerrank.com/challenges/counting-valleys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
  */
 
 let example = {
     steps: 8,
-    path: [U, D, D, D, U, D, U, U]
+    path: 'UDDDUDUU'
 } 
 
 function countingValleys(steps, path) {
-    // Write your code here
-
+    let valleyCount = 0
+    let seaLevel = 0
+    let p = path.split('')
+    // console.log(p) 
+    p.forEach(step => {
+        if(step === 'U') {
+            seaLevel += 1
+            if (seaLevel === 0){
+                valleyCount += 1
+            }
+            // console.log('valley:', valleyCount)
+            // console.log('sea level:', seaLevel)
+        } else {
+            seaLevel -= 1
+            // console.log('valley:', valleyCount)
+            // console.log('sea level:', seaLevel)
+        }
+    })
+    return valleyCount
 } 
 
 // countingValleys(example.steps, example.path) 
 
-// console.log(countingValleys(example.steps, example.path))
+console.log(countingValleys(example.steps, example.path))
